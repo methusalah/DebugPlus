@@ -5,9 +5,9 @@
 # DebugPlus
 You already like Debug.DrawLine and Log? You will love DebugPlus' DrawMesh, DrawSphere, LogOnScreen...
 
-DebugPlus brings features that are missing in Unity Debug, allowing to draw gizmos and logs at run time, from anywhere in your code in a single line. Just specify a color, a duration and optionnaly a matrix.
+DebugPlus brings features that are missing in Unity Debug, allowing to draw gizmos and logs at run time, from anywhere in your code with a single line. Just specify a color, a duration and optionnaly a matrix.
 
-'''This asset is in beta, you are welcome to report any issue in the github issue page. It will be released on the asset store when beta testing is done.
+This asset is in beta, you are welcome to report any issue in the github issue page. It will be released on the asset store when beta testing is done.
 
 ## Gizmos
 Gizmos are powerfull for debugging, but Unity Debug only offers Line and Ray. DebugPlus adds all built-in gizmos:
@@ -27,7 +27,7 @@ Examples:
 ## Log on screen
 Console logs are sweet, but sometimes it's more convienent to write things directly on the screen. Inspired by Unreal Engine 4, DebugPlus LogOnScreen let you write your logs with color and duration on the top left corner of your GUI.
 
-Exapmles:
+Examples:
 
     DebugPlus.LogOnScreen("motion " + debugMotion, Color.green, 0);
     DebugPlus.LogOnScreen("An excpetion occured during played update : " + e.Message, Color.red, 10);
