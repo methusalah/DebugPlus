@@ -13,6 +13,8 @@ Gizmos are powerfull for debugging, but Unity Debug only offers Line and Ray. De
 - DrawIcon
 - etc.
 
+Examples:
+
     DebugPlus.DrawWireSphere(transform.position, 1, Color.blue);
     DebugPlus.DrawCube(transform.position, new Vector3(1, 2, 1), Color.red, duration: 10);
 
@@ -20,6 +22,8 @@ Gizmos are powerfull for debugging, but Unity Debug only offers Line and Ray. De
 
 ## Log on screen
 Console logs are sweet, but sometimes it's more convienent to write things directly on the screen. Inspired by Unreal Engine 4, DebugPlus LogOnScreen let you write your logs with color and duration on the top left corner of your GUI.
+
+Exapmles:
 
     DebugPlus.LogOnScreen("motion " + debugMotion, Color.green, 0);
     DebugPlus.LogOnScreen("An excpetion occured during played update : " + e.Message, Color.red, 10);
