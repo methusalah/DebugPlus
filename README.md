@@ -7,7 +7,7 @@ You already like Debug.DrawLine and Log? You will love DebugPlus' DrawMesh, Draw
 
 DebugPlus brings features that are missing in Unity Debug, allowing to draw gizmos and logs at run time, from anywhere in your code with a single line. Just specify a color, a duration and optionnaly a matrix.
 
-This asset is in beta, you are welcome to report any issue in the github issue page. It will be released on the asset store when beta testing is done.
+This free and open-source asset is in beta, you are welcome to report any issue in the github issue page. It will be released on the asset store when beta testing is done.
 
 ## Gizmos
 Gizmos are powerfull for debugging, but Unity Debug only offers Line and Ray. DebugPlus adds all built-in gizmos:
