@@ -9,82 +9,76 @@ using System.Text;
 using DebugPlusAsset;
 
 public static class DebugPlus {
-    public static void DrawCube(Vector3 center, Vector3 size, Color color, float duration = 0, Matrix4x4 matrix = default) {
-        Draw(() => Gizmos.DrawCube(center, size), color, duration, matrix);
+    public static Drawing DrawCube(Vector3 center, Vector3 size) {
+        return Draw(new Drawing(() => Gizmos.DrawCube(center, size)));
     }
 
-    public static void DrawFrustum(Vector3 center, float fov, float maxRange, float minRange, float aspect, Color color, float duration = 0, Matrix4x4 matrix = default) {
-        Draw(() => Gizmos.DrawFrustum(center, fov, maxRange, minRange, aspect), color, duration, matrix);
+    public static Drawing DrawFrustum(Vector3 center, float fov, float maxRange, float minRange, float aspect) {
+        return Draw(new Drawing(() => Gizmos.DrawFrustum(center, fov, maxRange, minRange, aspect)));
     }
 
-    public static void DrawGUITexture(Rect screenRect, 
+    public static Drawing DrawGUITexture(Rect screenRect, 
         Texture texture, 
         int leftBorder, 
         int rightBorder, 
         int topBorder, 
         int bottomBorder,
-        Material mat,
-        Color color, 
-        float duration = 0, 
-        Matrix4x4 matrix = default) {
-        Draw(() => Gizmos.DrawGUITexture(screenRect, texture, leftBorder, rightBorder, topBorder, bottomBorder, mat), color, duration, matrix);
+        Material mat) {
+        return Draw(new Drawing(() => Gizmos.DrawGUITexture(screenRect, texture, leftBorder, rightBorder, topBorder, bottomBorder, mat)));
     }
 
-    public static void DrawIcon(Vector3 center, string name, bool allowScaling, Color color, float duration = 0, Matrix4x4 matrix = default) {
-        Draw(() => Gizmos.DrawIcon(center, name, allowScaling), color, duration, matrix);
+    public static Drawing DrawIcon(Vector3 center, string name, bool allowScaling) {
+        return Draw(new Drawing(() => Gizmos.DrawIcon(center, name, allowScaling)));
     }
 
-    public static void DrawLine(Vector3 start, Vector3 end, Color color, float duration = 0, Matrix4x4 matrix = default) {
-        Draw(() => Gizmos.DrawLine(start, end), color, duration, matrix);
+    public static Drawing DrawLine(Vector3 start, Vector3 end) {
+        return Draw(new Drawing(() => Gizmos.DrawLine(start, end)));
     }
 
-    public static void DrawMesh(Mesh mesh,
+    public static Drawing DrawMesh(Mesh mesh,
         int submeshIndex,
         Vector3 position,
         Quaternion rotation,
-        Vector3 scale,
-        Color color,
-        float duration = 0,
-        Matrix4x4 matrix = default) {
-        Draw(() => Gizmos.DrawMesh(mesh, submeshIndex, position, rotation, scale), color, duration, matrix);
+        Vector3 scale) {
+        return Draw(new Drawing(() => Gizmos.DrawMesh(mesh, submeshIndex, position, rotation, scale)));
     }
 
-    public static void DrawRay(Vector3 from, Vector3 direction, Color color, float duration = 0, Matrix4x4 matrix = default) {
-        Draw(() => Gizmos.DrawRay(from, direction), color, duration, matrix);
+    public static Drawing DrawRay(Vector3 from, Vector3 direction) {
+        return Draw(new Drawing(() => Gizmos.DrawRay(from, direction)));
     }
 
-    public static void DrawRay(Ray ray, Color color, float duration = 0, Matrix4x4 matrix = default) {
-        Draw(() => Gizmos.DrawRay(ray), color, duration, matrix);
+    public static Drawing DrawRay(Ray ray) {
+        return Draw(new Drawing(() => Gizmos.DrawRay(ray)));
     }
 
-    public static void DrawSphere(Vector3 center, float radius, Color color, float duration = 0, Matrix4x4 matrix = default) {
-        Draw(() => Gizmos.DrawSphere(center, radius), color, duration, matrix);
+    public static Drawing DrawSphere(Vector3 center, float radius) {
+        return Draw(new Drawing(() => Gizmos.DrawSphere(center, radius)));
     }
 
-    public static void DrawWireCube(Vector3 center, Vector3 size, Color color, float duration = 0, Matrix4x4 matrix = default) {
-        Draw(() => Gizmos.DrawWireCube(center, size), color, duration, matrix);
+    public static Drawing DrawWireCube(Vector3 center, Vector3 size) {
+        return Draw(new Drawing(() => Gizmos.DrawWireCube(center, size)));
     }
 
-    public static void DrawWireMesh(Mesh mesh,
+    public static Drawing DrawWireMesh(Mesh mesh,
         int submeshIndex,
         Vector3 position,
         Quaternion rotation,
-        Vector3 scale,
-        Color color,
-        float duration = 0,
-        Matrix4x4 matrix = default) {
-        Draw(() => Gizmos.DrawWireMesh(mesh, submeshIndex, position, rotation, scale), color, duration, matrix);
+        Vector3 scale) {
+        return Draw(new Drawing(() => Gizmos.DrawWireMesh(mesh, submeshIndex, position, rotation, scale)));
     }
 
-    public static void DrawWireSphere(Vector3 center, float radius, Color color, float duration = 0, Matrix4x4 matrix = default) {
-        Draw(() => Gizmos.DrawWireSphere(center, radius), color, duration, matrix);
+    public static Drawing DrawWireSphere(Vector3 center, float radius) {
+        return Draw(new Drawing(() => Gizmos.DrawWireSphere(center, radius)));
     }
 
-    private static void Draw(Action action, Color color, float duration = 0, Matrix4x4 matrix = default) {
-        GizmoDrawer.Draw(new Drawing(action, color, duration, matrix));
+    private static Drawing Draw(Drawing drawing) {
+        GizmoDrawer.Draw(drawing);
+        return drawing;
     }
 
-    public static void LogOnScreen(string text, Color color, float duration) {
-        LogDrawer.Log(new LogEntry(text, color, duration));
+    public static LogEntry LogOnScreen(string text) {
+        var res = new LogEntry(text);
+        LogDrawer.Log(res);
+        return res;
     }
 }
