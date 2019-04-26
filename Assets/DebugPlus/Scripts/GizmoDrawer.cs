@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Linq;
 
-namespace DebugPlusAsset {
+namespace DebugPlusNS {
     public class GizmoDrawer : SingletonBehavior<GizmoDrawer> {
         public readonly List<Drawing> drawings = new List<Drawing>();
 
@@ -20,7 +20,7 @@ namespace DebugPlusAsset {
                 var prevColor = Gizmos.color;
                 var prevMatrix = Gizmos.matrix;
                 Gizmos.color = d.color;
-                if (d.matrix != default) {
+                if (d.matrix != default(Matrix4x4))  {
                     Gizmos.matrix = d.matrix;
                 }
                 d.action();

@@ -6,7 +6,7 @@ using UnityEditor;
 using System;
 using UnityEngine.UI;
 using System.Text;
-using DebugPlusAsset;
+using DebugPlusNS;
 
 public static class DebugPlus {
     public static Drawing DrawCube(Vector3 center, Vector3 size) {

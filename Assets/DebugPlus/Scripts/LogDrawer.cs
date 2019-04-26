@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DebugPlusAsset {
+namespace DebugPlusNS {
     public class LogDrawer : SingletonBehavior<LogDrawer> {
         private const int LOG_CAPACITY = 30;
 

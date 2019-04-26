@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-namespace DebugPlusAsset {
+namespace DebugPlusNS {
     public class Drawing {
         internal Action action;
         internal Color color = UnityEngine.Color.red;

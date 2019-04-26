@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace DebugPlusAsset {
+namespace DebugPlusNS {
     public class LogEntry {
         internal string text;
-        internal Color color;
-        internal float duration;
+        internal Color color = UnityEngine.Color.red;
+        internal float duration = 0;
 
         internal LogEntry(string text) {
             this.text = text;

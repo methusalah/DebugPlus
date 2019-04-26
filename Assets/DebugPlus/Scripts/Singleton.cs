@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DebugPlusAsset {
+namespace DebugPlusNS {
     public class SingletonBehavior<T> : MonoBehaviour where T : MonoBehaviour {
         private static object o = new object();
 
@@ -8,7 +8,7 @@ namespace DebugPlusAsset {
         public static T I {
             get {
                 if (applicationIsQuitting) {
-                    Debug.LogWarning($"Single instance of {typeof(T)} already destroyed on application quit. Won't create again - returning null.");
+                    Debug.LogWarning("Single instance of "+ typeof(T) + " already destroyed on application quit. Won't create again - returning null.");
                     return null;
                 }
 
@@ -17,14 +17,14 @@ namespace DebugPlusAsset {
                         i = (T)FindObjectOfType(typeof(T));
 
                         if (FindObjectsOfType(typeof(T)).Length > 1) {
-                            Debug.LogError($"There are many instances of the singleton behavior {typeof(T)} in the scene, which is illegal.");
+                            Debug.LogError("There are many instances of the singleton behavior " + typeof(T) + " in the scene, which is illegal.");
                             return i;
                         }
 
                         if (i == null) {
                             GameObject singleton = new GameObject();
                             i = singleton.AddComponent<T>();
-                            singleton.name = $"{typeof(T)} singleton";
+                            singleton.name = typeof(T) + " singleton";
 
                             DontDestroyOnLoad(singleton);
                         }
