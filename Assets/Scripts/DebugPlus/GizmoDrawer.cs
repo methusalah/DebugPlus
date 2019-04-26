@@ -9,13 +9,14 @@ namespace DebugPlusAsset {
         public readonly List<Drawing> drawings = new List<Drawing>();
 
         private void Update() {
-            foreach (var d in drawings) {
+            foreach (var d in drawings.ToList()) {
                 d.duration -= Time.deltaTime;
+                if (d.drawn && d.duration < 0) drawings.Remove(d);
             }
         }
 
         private void OnDrawGizmos() {
-            foreach (var d in drawings.ToList()) {
+            foreach (var d in drawings) {
                 var prevColor = Gizmos.color;
                 var prevMatrix = Gizmos.matrix;
                 Gizmos.color = d.color;
@@ -27,9 +28,7 @@ namespace DebugPlusAsset {
                 Gizmos.color = prevColor;
                 Gizmos.matrix = prevMatrix;
 
-                // we remove the drawing here and not in the update to ensure that
-                // drawings with 0 duration will be drawn at least one time.
-                if (d.duration <= 0) drawings.Remove(d);
+                d.drawn = true;
             }
         }
 

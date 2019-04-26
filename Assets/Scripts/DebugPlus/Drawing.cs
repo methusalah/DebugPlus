@@ -9,6 +9,8 @@ namespace DebugPlusAsset {
         internal Matrix4x4 matrix = Matrix4x4.identity;
         internal float duration = 0;
 
+        internal bool drawn = false;
+
         internal Drawing (Action action) {
             this.action = action;
         }
