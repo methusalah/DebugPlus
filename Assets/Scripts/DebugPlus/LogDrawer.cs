@@ -27,6 +27,7 @@ namespace DebugPlusAsset {
             var vlg = vlgo.GetComponent<VerticalLayoutGroup>();
             vlg.childForceExpandHeight = false;
             vlg.childForceExpandWidth = false;
+            vlg.childControlHeight = false;
 
             var vlRect = vlgo.GetComponent<RectTransform>();
             vlRect.anchorMin = new Vector2(0.05f, 0.3f);
@@ -37,9 +38,11 @@ namespace DebugPlusAsset {
             // texts
             I.texts = new List<Text>();
             for (int i = 0; i < LOG_CAPACITY; i++) {
-                var go = new GameObject("Log entry");
+                var go = new GameObject("Log entry", typeof(Text));
                 go.transform.parent = vlgo.transform;
-                var t = go.AddComponent<Text>();
+                go.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 17);
+                //go.GetComponent<RectTransform>().ForceUpdateRectTransforms();
+                var t = go.GetComponent<Text>();
                 t.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
                 I.texts.Add(t);
             }
