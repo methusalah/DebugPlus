@@ -1,0 +1,76 @@
+DebugPlus helps you debug your code by drawing 3d shapes and logs on screen.
+When you add the plugin to your project, the class "DebugPlus" becomes available from anywhere in your code.
+This is your only entry point to all DebugPlus features.
+
+-------------
+How to use it
+-------------
+
+You can draw any built-in Unity gyzmo like this:
+    DebugPlus.DrawCube(center, size);
+    DebugPlus.DrawSphere(center, radius);
+    DebugPlus.DrawLine(start, end);
+    DebugPlus.DrawRay(from, direction);
+    DebugPlus.DrawMesh(...);
+    DebugPlus.DrawWireCube(...);
+    DebugPlus.DrawWireMesh(...);
+    DebugPlus.DrawWireSphere(...);
+    DebugPlus.DrawFrustum(...);
+    DebugPlus.DrawGUITexture(...);
+    DebugPlus.DrawIcon(...);
+
+You can write logs directly on the screen like this:
+    DebugPlus.LogOnScreen("this will appear on the game screen");
+
+Optionaly, you can specify a duration, color and matrix in a fluent way like this:
+    DebugPlus.DrawLine(start, end)
+        .Duration(d)
+        .Color(c)
+        .Matrix(m);
+    DebugPlus.LogOnScreen("this text will appear in red for 5 seconds)
+        .Duration(5)
+        .Color(Color.red);
+
+You can also draw your own home-made gyzmo like this:
+    DebugPlus.Draw(new Drawing(() =>
+	{
+	    // let's draw a wire triangle
+		Gyzmo.DrawLine(aPoint, bPoint);
+		Gyzmo.DrawLine(bPoint, cPoint);
+		Gyzmo.DrawLine(aPoint, cPoint);
+	}))
+	.Color(c)
+	.Duration(d);
+
+* duration is given in seconds
+
+Remimder : Unity allows you to draw gyzmos in the game screen in addition to the editor screen. Just check the toggle
+button on top of the game tab.
+
+----------------
+How does it work
+----------------
+
+In Unity, you can draw gyzoms only by implementing OnDrawGizmos, and only in MonoBehavior classes. But Unity also provides
+a line drawing feature in the Debug class. DebugPlus allows to draw all built-in Unity's gyzmos in the same way that Unity.Debug
+is drawing line : anytime, anywhere by specifying only a color and a duration. DebugPlus also adds an optionnal matrix to deform
+shapes like cubes or meshes.
+
+To draw these gyzmos, DebugPlus creates a game object that implements the OnDrawGizmos methods for you, and manages the drawing
+of the gyzmos over time. This game object is created only in play mode, if you call DebugPlus.
+
+
+DebugPlus also creates a dedicated canvas where it is possble to draw text, because it's sometimes more handy to have a log on the screen,
+not only on the console. The LogOnScreen methods works the same way than gyzmos : logs are drawn with a specified color and for
+a specified duration over time. If the dedicated canvas messes with your existing GUI, please report it via email or on the official
+forum (see below).
+
+In absence of a duration, the gyzmos and logs are drawn only once on the next frame.
+
+-------
+Support
+-------
+
+If you want support for any issue, discuss about new features or simply say hello, please contact me at dumas18101@gmail.com or
+join the official thread on the Unity forum.
+
