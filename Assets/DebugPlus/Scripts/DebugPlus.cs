@@ -71,7 +71,7 @@ public static class DebugPlus {
         return Draw(new Drawing(() => Gizmos.DrawWireSphere(center, radius)));
     }
 
-    private static Drawing Draw(Drawing drawing) {
+    public static Drawing Draw(Drawing drawing) {
         GizmoDrawer.Draw(drawing);
         return drawing;
     }
