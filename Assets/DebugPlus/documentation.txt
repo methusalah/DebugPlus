@@ -1,6 +1,6 @@
-DebugPlus helps you debug your code by drawing 3d shapes and logs on screen.
+DebugPlus helps you debug your code by drawing 3d shapes and logs on screen, and timing parts of code.
 When you add the plugin to your project, the class "DebugPlus" becomes available from anywhere in your code.
-This is your only entry point to all DebugPlus features.
+This is your one and only entry point to all DebugPlus features.
 
 -------------
 How to use it
@@ -66,6 +66,36 @@ a specified duration over time. If the dedicated canvas messes with your existin
 forum (see below).
 
 In absence of a duration, the gyzmos and logs are drawn only once on the next frame.
+
+----------------
+Code chronometer
+----------------
+
+DebugPlus also provide a code chronometer. This tool allow you to time blocs of code, cumulate result and get a report showing all
+timers in a hierachical way, to understand where the time is spent. Each time you start a chronometer, DebugPlus will get the calling
+method name (plus an optionnal label you can set) and cumulate times for this bloc of code.
+
+Note that the chronometer may slow your software if you call it on very fast pieces of code. However, even in such situation, you will
+still be able to find the slower blocs by comparison.
+
+Start the timer anywhere with:
+    DebugPlus.StartChronometer();
+
+
+Stop the last timer with:
+    DebugPlus.StopCurrentChronometer();
+
+Get a detailled report with:
+    DebugPlus.GetChronometerReport();
+
+Example of report:
+ Demo.MethodA : 237 ms
+     Demo.MethodB : 182 ms
+         Demo.MethodB.sub bloc : 18 ms
+         Demo.MethodC : 163 ms (10 per call)
+     Demo.MethodC : 54 ms (10 per call)
+
+Note : DebugPlus is a developper tool and should not be used at all during the release of your software to prevent performance and dependancy issues.
 
 -------
 Support
