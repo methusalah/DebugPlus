@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 namespace DebugPlusNS {
@@ -42,6 +43,46 @@ namespace DebugPlusNS {
                     .Color(Color.cyan)
                     .Matrix(go.transform.localToWorldMatrix);
             }
+        }
+
+        private void Awake() {
+            // some code timing
+            MethodA();
+            MethodA();
+            MethodA();
+            MethodA();
+            MethodA();
+            Debug.Log(DebugPlus.GetChronometerReport());
+        }
+
+        private void MethodA() {
+            DebugPlus.StartChronometer();
+
+            MethodB();
+            MethodC();
+
+            DebugPlus.StopCurrentChronometer();
+        }
+        private void MethodB() {
+            DebugPlus.StartChronometer();
+
+            DebugPlus.StartChronometer("sub bloc");
+            // your timed sub bloc
+            Thread.Sleep(3);
+            DebugPlus.StopCurrentChronometer();
+            
+            MethodC();
+            MethodC();
+            MethodC();
+            
+            DebugPlus.StopCurrentChronometer();
+        }
+        private void MethodC() {
+            DebugPlus.StartChronometer(showAverage:true);
+
+            Thread.Sleep(10);
+
+            DebugPlus.StopCurrentChronometer();
         }
     }
 }
