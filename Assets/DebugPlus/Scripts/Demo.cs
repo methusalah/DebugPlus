@@ -26,16 +26,10 @@ namespace DebugPlusNS {
                 .Color(pitch > 0 ? Color.blue : Color.green);
 
             // some gizmos
-            if (Input.GetKeyDown(KeyCode.Space)) {
+            if (space) {
                 DebugPlus.DrawWireSphere(new Vector3(0, 1, -2), 0.8f)
                     .Color(Color.red)
                     .Duration(2);
-                DebugPlus.DrawSphere(new Vector3(0, 1, 0), 1)
-                    .Color(Color.blue)
-                    .Duration(2);
-            }
-
-            if (space) {
                 DebugPlus.DrawSphere(new Vector3(0, 1, 0), 1)
                     .Color(Color.blue)
                     .Duration(2);
