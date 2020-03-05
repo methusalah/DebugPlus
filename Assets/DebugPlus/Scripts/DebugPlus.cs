@@ -167,7 +167,9 @@ public static class DebugPlus {
     /// <param name="drawing">A custom drawing to draw.</param>
     /// <returns>The fluent object to add parameters.</returns>
     public static Drawing Draw(Drawing drawing) {
+#if UNITY_EDITOR
         GizmoDrawer.Draw(drawing);
+#endif
         return drawing;
     }
 
@@ -179,7 +181,9 @@ public static class DebugPlus {
     /// <returns>The fluent object to add parameters.</returns>
     public static LogEntry LogOnScreen(string text) {
         var res = new LogEntry(text);
+#if UNITY_EDITOR
         LogDrawer.Log(res);
+#endif
         return res;
     }
 
