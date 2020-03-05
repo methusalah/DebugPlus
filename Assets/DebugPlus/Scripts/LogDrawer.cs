@@ -73,5 +73,10 @@ namespace DebugPlusNS {
         public static void Log(LogEntry logEntry) {
             I.logEntries.Insert(0, logEntry);
         }
+
+        [RuntimeInitializeOnLoadMethod]
+        static void Init() {
+            applicationIsQuitting = false;
+        }
     }
 }

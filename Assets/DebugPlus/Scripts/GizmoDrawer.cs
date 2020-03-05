@@ -35,5 +35,10 @@ namespace DebugPlusNS {
         public static void Draw(Drawing drawing) {
             I.drawings.Add(drawing);
         }
+
+        [RuntimeInitializeOnLoadMethod]
+        static void Init() {
+            applicationIsQuitting = false;
+        }
     }
 }
