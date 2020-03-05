@@ -8,11 +8,11 @@ namespace DebugPlusNS {
         internal Color color = UnityEngine.Color.red;
         internal Matrix4x4 matrix = Matrix4x4.identity;
         internal float duration = 0;
-
-        internal bool drawn = false;
+        internal int creationFrame;
 
         internal Drawing (Action action) {
             this.action = action;
+            creationFrame = Time.frameCount;
         }
 
         public Drawing Color(Color color) {
