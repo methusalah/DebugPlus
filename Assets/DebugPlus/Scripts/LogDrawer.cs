@@ -22,7 +22,7 @@ namespace DebugPlusNS {
 
             // vertical layout
             var vlgo = new GameObject("Log", typeof(VerticalLayoutGroup));
-            vlgo.transform.parent = cgo.transform;
+            vlgo.transform.SetParent(cgo.transform, false);
 
             var vlg = vlgo.GetComponent<VerticalLayoutGroup>();
             vlg.childForceExpandHeight = false;
@@ -39,7 +39,7 @@ namespace DebugPlusNS {
             I.texts = new List<Text>();
             for (int i = 0; i < LOG_CAPACITY; i++) {
                 var go = new GameObject("Log entry", typeof(Text));
-                go.transform.parent = vlgo.transform;
+                go.transform.SetParent(vlgo.transform, false);
                 go.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 17);
                 //go.GetComponent<RectTransform>().ForceUpdateRectTransforms();
                 var t = go.GetComponent<Text>();
