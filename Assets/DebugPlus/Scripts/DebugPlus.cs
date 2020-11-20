@@ -169,6 +169,8 @@ public static class DebugPlus {
     public static Drawing Draw(Drawing drawing) {
 #if UNITY_EDITOR
         GizmoDrawer.Draw(drawing);
+#else
+        if (DebugPlusManager.I.enableInBuild) GizmoDrawer.Draw(drawing);
 #endif
         return drawing;
     }
@@ -183,6 +185,8 @@ public static class DebugPlus {
         var res = new LogEntry(text);
 #if UNITY_EDITOR
         LogDrawer.Log(res);
+#else
+        if (DebugPlusManager.I.enableInBuild) LogDrawer.Log(res);
 #endif
         return res;
     }
