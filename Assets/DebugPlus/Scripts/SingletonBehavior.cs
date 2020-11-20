@@ -27,7 +27,6 @@ namespace DebugPlusNS {
                             GameObject singleton = new GameObject();
                             i = singleton.AddComponent<T>();
                             singleton.name = typeof(T) + " singleton";
-
                             DontDestroyOnLoad(singleton);
                         }
                     }
@@ -48,8 +47,8 @@ namespace DebugPlusNS {
             applicationIsQuitting = true;
         }
 
-        private void OnDestroy() {
-            applicationIsQuitting = true;
-        }
+        //private void OnDestroy() {
+        //    applicationIsQuitting = true;
+        //}
     }
 }
